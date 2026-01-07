@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Organizador Financiero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- =======================
+      LOGIN
+======================= -->
+<div id="login-screen" class="login-container">
+  <div class="login-box">
+    <h2>👤 Iniciar sesión</h2>
+
+    <input type="text" id="login-user" placeholder="Usuario">
+    <input type="password" id="login-pass" placeholder="Contraseña">
+
+    <button onclick="login()">Entrar</button>
+    <button onclick="register()" class="secondary">Registrarse</button>
+  </div>
+</div>
+
+<!-- =======================
+      APP
+======================= -->
+<div id="app" style="display:none;">
+
+<header class="topbar">
+  <div class="user-info">
+    👤 <span id="username"></span>
+  </div>
+
+  <h1>💰 Organizador Financiero</h1>
+
+  <button onclick="abrirPerfil()" class="profile-btn">Perfil</button>
+  <button onclick="logout()" class="logout-btn">Salir</button>
+
+  <div class="month-selector">
+    <button class="month active" data-month="Ene">Ene</button>
+    <button class="month" data-month="Feb">Feb</button>
+    <button class="month" data-month="Mar">Mar</button>
+    <button class="month" data-month="Abr">Abr</button>
+    <button class="month" data-month="May">May</button>
+    <button class="month" data-month="Jun">Jun</button>
+    <button class="month" data-month="Jul">Jul</button>
+    <button class="month" data-month="Ago">Ago</button>
+    <button class="month" data-month="Sep">Sep</button>
+    <button class="month" data-month="Oct">Oct</button>
+    <button class="month" data-month="Nov">Nov</button>
+    <button class="month" data-month="Dic">Dic</button>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="cards">
+  <div class="card income">
+    <h3>Ingresos</h3>
+    <p>$ <span id="total-ingresos">0</span></p>
+  </div>
+
+  <div class="card expense">
+    <h3>Gastos</h3>
+    <p>$ <span id="total-gastos">0</span></p>
+  </div>
+
+  <div class="card debt">
+    <h3>Deudas</h3>
+    <p>$ <span id="total-deudas">0</span></p>
+  </div>
+
+  <div class="card balance">
+    <h3>Balance</h3>
+    <p>$ <span id="balance-total">0</span></p>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Agregar movimiento</h2>
+
+  <form id="form-movimiento">
+    <input type="text" name="descripcion" placeholder="Descripción" required>
+    <input type="number" name="monto" placeholder="Monto" required>
+
+    <select name="tipo" required>
+      <option value="ingreso">Ingreso</option>
+      <option value="gasto">Gasto</option>
+      <option value="deuda">Deuda</option>
+    </select>
+
+    <input type="date" name="fecha" required>
+    <button type="submit">Agregar</button>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Movimientos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Tipo</th>
+        <th>Monto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="lista-movimientos"></tbody>
+  </table>
+</section>
+
+</main>
+</div>
+
+<!-- =======================
+      PERFIL
+======================= -->
+<div id="profile-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h2>👤 Perfil</h2>
+
+    <p><strong>Usuario:</strong> <span id="perfil-usuario"></span></p>
+
+    <input type="password" id="pass-actual" placeholder="Contraseña actual">
+    <input type="password" id="pass-nueva" placeholder="Nueva contraseña">
+
+    <button onclick="cambiarPassword()">Cambiar contraseña</button>
+    <button onclick="cerrarPerfil()" class="close-btn">Cerrar</button>
+  </div>
+</div>
+
+<!-- JS (MUY IMPORTANTE: al final) -->
+<script src="js/app.js"></script>
+</body>
+</html>
